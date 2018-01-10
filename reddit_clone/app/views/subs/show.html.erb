@@ -1,0 +1,43 @@
+<h3>Moderator: </h3>
+<%= @sub.moderator.username %>
+
+<h5>Title: </h5>
+<%= @sub.title %>
+
+<h5>Description</h5>
+<%= @sub.description %>
+<br>
+<br>
+<br>
+<%= link_to "Edit Sub", edit_sub_url(@sub) %>
+<%= link_to "Subs", subs_url %>
+
+<h2>Posts</h2>
+  <% @sub.posts.each do |post| %>
+    <%= post.title %>
+    <%= post.url %>
+    <%= post.content %>
+    <br>
+  <% end %>
+
+<h3>Add Post</h3>
+<form class="" action="<%= sub_posts_url(@sub) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>
+    Title
+    <input type="text" name="post[title]" value="">
+  </label>
+
+  <label>
+    URL
+    <input type="text" name="post[url]" value="">
+  </label>
+
+  <label>
+    Content
+    <input type="text" name="post[content]" value="">
+  </label>
+
+  <input type="submit" name="" value="Add Post">
+
+</form>
